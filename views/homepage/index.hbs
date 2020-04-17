@@ -1,11 +1,51 @@
-<main role="main" class="container">
-  <div class="starter-template">
-    <h1>Bootstrap starter template</h1>
-    <p class="lead">
-      Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.
-    </p>
-    <p>
-      Source: <a href="https://getbootstrap.com/docs/4.0/examples/" target="_blank">https://getbootstrap.com/docs/4.0/examples/</a>
-    </p>
-  </div>
-</main>
+<div class="wrapper">
+    <!-- Sidebar -->
+    <nav id="sidebar">
+        <div class="sidebar-header">
+            <div class="container">
+              <h3>Jugadores en la sala</h3>
+              <div id="ingame"></div>
+            </div>
+            <div class="container">
+              <h3>Jugadores en espera</h3>
+              <div id="lobby"></div>
+            </div>
+        </div>
+    </nav>
+
+    <main role="main" class="container">
+      <div class="card text-center">
+        <div class="card-header">
+          <h5 class="card-title" id="playerName"></h5>
+          <p class="card-subtitle mb-2" id="letterSubtitle">La letra es</p>
+        </div>
+        <div class="card-body">
+          <h6 class="card-title" id="letter"></h6>
+          <div id="winner" hidden>
+            <h6 id="winnerName"></h6>
+          </div>
+        </div>
+        <div class="card-footer" id="score" hidden>
+          <p id="playerScore1"></p>
+          <p id="playerScore2"></p>
+        </div>
+      </div>
+
+      <form>
+        <div class="form-group">
+          <label for="nombre">Nombre</label>
+          <input type="text" value="" class="form-control" name="nombre" id="nombre" disabled>
+        </div>
+        <div class="form-group">
+          <label for="color">Color</label>
+          <input type="text" value="" class="form-control" name="color" id="color" disabled>
+        </div>
+        <div class="form-group">
+          <label for="fruto">Fruto</label>
+          <input type="text" value="" class="form-control" name="fruto" id="fruto" disabled>
+        </div>
+
+        <input type="button" value="Basta!" class="btn btn-success" id="btn" onclick="basta();" disabled>
+        <input type="button" value="Quit Game" class="btn btn-danger" id="quit" onclick="quitGame();" hidden>
+      </form>
+</div>
