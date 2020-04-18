@@ -55,6 +55,20 @@ function connectToSocketIo() {
         document.getElementById('btn').disabled = false;
     });
 
+    window.socket.on('receiveQuit', function() {
+        $('#ingame').empty();
+        document.getElementById('letter').innerHTML = '';
+        document.getElementById('nombre').value = '';
+        document.getElementById('color').value = '';
+        document.getElementById('fruto').value = '';
+        document.getElementById('winnerName').value = '';
+        document.getElementById('playerScore1').value = '';
+        document.getElementById('playerScore2').value = '';
+        document.getElementById('winner').hidden = true;
+        document.getElementById('score').hidden = true;
+        document.getElementById('quit').hidden = true;
+    });
+
     window.socket.on('receiveBasta', function() {
         document.getElementById('btn').disabled = true;
     });
@@ -89,20 +103,25 @@ function connectToSocketIo() {
 
     window.socket.on('opponentLeft', function() {
         showToast('Tu oponente se fue');
+
+        document.getElementById('winnerName').innerHTML = 'Ganaste por default';
+        document.getElementById('nombre').disabled = true;
+        document.getElementById('color').disabled = true;
+        document.getElementById('fruto').disabled = true;
+        document.getElementById('btn').disabled = true;
+        document.getElementById('letter').hidden = true;
+        document.getElementById('winner').hidden = false;
+        document.getElementById('quit').hidden = false;
     });
 
 }
-
-// function messageToServer(msg) {
-//     window.socket.emit('message-to-server', {message: msg});
-// }
 
 function basta() {
     window.socket.emit('getBasta');
 }
 
 function quitGame() {
-    console.log("Quit is pressed");
+    window.socket.emit('quitGame');
 }
 
 $(function() {

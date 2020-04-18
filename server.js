@@ -82,7 +82,6 @@ var waitingRoom = [];
 var playingRoom = [];
 var gameHasStarted = false;
 var gameAnswers = [];
-var points;
 var letter;
 var unmatched;
 
@@ -121,6 +120,19 @@ io.on('connection', (socket) => {
   addPlayer(socket, playerName);
   io.emit('sendPlayerRoom', {room: playingRoom});
   io.emit('sendWaitingRoom', {room: waitingRoom});
+  
+  socket.on('quitGame', function() {
+    // for (let i = 0; i < playingRoom[0].length; i++) {
+    //   waitingRoom.push(playingRoom[0][i]);
+    // }
+    playingRoom = [];
+    waitingRoom = [];
+    gameHasStarted = false;
+    gameAnswers = [];
+    io.emit('receiveQuit');
+    io.emit('sendPlayerRoom', {room: playingRoom});
+    io.emit('sendWaitingRoom', {room: waitingRoom});
+  });
 
   // if the player has an opponent
   if(opponentOf(socket)) {
@@ -223,7 +235,7 @@ function addPlayer(socket, playerName) {
     waitingRoom.push(playerName);
 
     // if there are enough players to send them to playing Room
-    if (waitingRoom.length >= 2 && playingRoom.length == 0) {
+    if (waitingRoom.length >= 2 && playingRoom.length == 0 && gameHasStarted == false) {
       playersIngame = waitingRoom.splice(0,2);
       playingRoom.push(playersIngame);
     }

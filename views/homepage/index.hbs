@@ -14,38 +14,40 @@
     </nav>
 
     <main role="main" class="container">
-      <div class="card text-center">
-        <div class="card-header">
-          <h5 class="card-title" id="playerName"></h5>
-          <p class="card-subtitle mb-2" id="letterSubtitle">La letra es</p>
-        </div>
-        <div class="card-body">
-          <h6 class="card-title" id="letter"></h6>
-          <div id="winner" hidden>
-            <h6 id="winnerName"></h6>
+      <div id="game">
+        <div class="card text-center">
+          <div class="card-header">
+            <h5 class="card-title" id="playerName"></h5>
+            <p class="card-subtitle mb-2" id="letterSubtitle">La letra es</p>
+          </div>
+          <div class="card-body">
+            <h6 class="card-title" id="letter"></h6>
+            <div id="winner" hidden>
+              <h6 id="winnerName"></h6>
+            </div>
+          </div>
+          <div class="card-footer" id="score" hidden>
+            <p id="playerScore1"></p>
+            <p id="playerScore2"></p>
           </div>
         </div>
-        <div class="card-footer" id="score" hidden>
-          <p id="playerScore1"></p>
-          <p id="playerScore2"></p>
-        </div>
+
+        <form>
+          <div class="form-group">
+            <label for="nombre">Nombre</label>
+            <input type="text" value="" class="form-control" name="nombre" id="nombre" disabled>
+          </div>
+          <div class="form-group">
+            <label for="color">Color</label>
+            <input type="text" value="" class="form-control" name="color" id="color" disabled>
+          </div>
+          <div class="form-group">
+            <label for="fruto">Fruto</label>
+            <input type="text" value="" class="form-control" name="fruto" id="fruto" disabled>
+          </div>
+
+          <input type="button" value="Basta!" class="btn btn-success" id="btn" onclick="basta();" disabled>
+          <input type="button" value="Quit Game" class="btn btn-danger" id="quit" onclick="quitGame();" hidden>
+        </form>
       </div>
-
-      <form>
-        <div class="form-group">
-          <label for="nombre">Nombre</label>
-          <input type="text" value="" class="form-control" name="nombre" id="nombre" disabled>
-        </div>
-        <div class="form-group">
-          <label for="color">Color</label>
-          <input type="text" value="" class="form-control" name="color" id="color" disabled>
-        </div>
-        <div class="form-group">
-          <label for="fruto">Fruto</label>
-          <input type="text" value="" class="form-control" name="fruto" id="fruto" disabled>
-        </div>
-
-        <input type="button" value="Basta!" class="btn btn-success" id="btn" onclick="basta();" disabled>
-        <input type="button" value="Quit Game" class="btn btn-danger" id="quit" onclick="quitGame();" hidden>
-      </form>
 </div>
